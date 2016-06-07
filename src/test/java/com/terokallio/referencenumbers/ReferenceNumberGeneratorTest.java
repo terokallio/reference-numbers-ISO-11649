@@ -1,4 +1,4 @@
-package com.terokallio.referencenumber;
+package com.terokallio.referencenumbers;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -42,7 +42,7 @@ public class ReferenceNumberGeneratorTest extends TestCase {
 
     public void testValidateBaseLengthMin() {
         try {
-            ReferenceNumberGenerator.generate("1", 1);
+            ReferenceNumberGenerator.generate("12", 1);
         } catch (InvalidAlgorithmParameterException e) {
             assertTrue(e.getMessage().contains("base length MUST be between 3 and 19 characters"));
             return;
