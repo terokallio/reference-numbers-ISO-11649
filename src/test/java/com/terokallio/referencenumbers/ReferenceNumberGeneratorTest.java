@@ -39,6 +39,58 @@ public class ReferenceNumberGeneratorTest extends TestCase {
         assertTrue( true );
     }
 
+    public void testValidateNullBase() {
+        try {
+            ReferenceNumberGenerator.generate(null, 1);
+        } catch (InvalidAlgorithmParameterException e) {
+            assertTrue(e.getMessage().contains("base length MUST be between 3 and 19 characters"));
+            return;
+        }
+        fail();
+    }
+
+    public void testValidateEmptyBase() {
+        try {
+            ReferenceNumberGenerator.generate("", 1);
+        } catch (InvalidAlgorithmParameterException e) {
+            assertTrue(e.getMessage().contains("base length MUST be between 3 and 19 characters"));
+            return;
+        }
+        fail();
+    }
+
+    public void testValidateNotANumber() {
+        try {
+            ReferenceNumberGenerator.generate("1231A12", 10);
+        } catch (InvalidAlgorithmParameterException e) {
+            assertTrue(e.getMessage().contains("base MUST be a number"));
+            return;
+        }
+        fail();
+    }
+
+    public void testNegativeAmount() {
+        int amount = -1;
+        List<String> result = new ArrayList<String>();
+        try {
+            result = ReferenceNumberGenerator.generate("111", amount);
+        } catch (InvalidAlgorithmParameterException e) {
+            fail();
+        }
+        assertEquals(0, result.size());
+    }
+
+    public void testZeroAmount() {
+        int amount = 0;
+        List<String> result = new ArrayList<String>();
+        try {
+            result = ReferenceNumberGenerator.generate("111", amount);
+        } catch (InvalidAlgorithmParameterException e) {
+            fail();
+        }
+        assertEquals(0, result.size());
+    }
+
 
     public void testValidateBaseLengthMin() {
         try {
