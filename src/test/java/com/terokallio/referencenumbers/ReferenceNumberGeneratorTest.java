@@ -31,14 +31,6 @@ public class ReferenceNumberGeneratorTest extends TestCase {
         return new TestSuite( ReferenceNumberGeneratorTest.class );
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testReferenceNumberGenerator()
-    {
-        assertTrue( true );
-    }
-
     public void testValidateNullBase() {
         try {
             ReferenceNumberGenerator.generate(null, 1);
@@ -90,7 +82,6 @@ public class ReferenceNumberGeneratorTest extends TestCase {
         }
         assertEquals(0, result.size());
     }
-
 
     public void testValidateBaseLengthMin() {
         try {
@@ -191,5 +182,16 @@ public class ReferenceNumberGeneratorTest extends TestCase {
         assertEquals("10168", result.get(17));
         assertEquals("10171", result.get(18));
         assertEquals("10184", result.get(19));
+    }
+
+    public void testGenerateMillionRefCodes() {
+        List<String> result = new ArrayList<String>();
+
+        try {
+            result = ReferenceNumberGenerator.generate("999", 1000000);
+        } catch (InvalidAlgorithmParameterException e) {
+            fail("Failed to generate ref codes.");
+        }
+        assertEquals(1000000, result.size());
     }
 }
