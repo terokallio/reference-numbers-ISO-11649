@@ -50,7 +50,7 @@ public final class ReferenceNumberGenerator {
         return referenceNumbers;
     }
 
-    private static int calculateCheckSum(String base) throws InvalidAlgorithmParameterException {
+    private static int calculateCheckSum(String base) {
 
         Integer[] multipliers = new Integer[] { 7, 3, 1 };
         int multiplierIndex = 0;
