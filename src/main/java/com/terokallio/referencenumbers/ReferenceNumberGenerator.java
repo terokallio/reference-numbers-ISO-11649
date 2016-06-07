@@ -10,14 +10,14 @@ import java.util.List;
 
 
 /**
- * Bank Reference Number Generator for Invoices
+ * Bank Reference Number Generator
  *
  * Created by tero.kallio on 06/06/16.
  */
 public final class ReferenceNumberGenerator {
 
     private ReferenceNumberGenerator() {
-        // this is a static class and it makes no sense even try to instantiate this.
+        // this is a static class and it makes no sense to instantiate this.
     }
 
     /**
@@ -32,15 +32,11 @@ public final class ReferenceNumberGenerator {
      *
      * @param base String reference number base
      * @param amount int amount of reference numbers
-     * @return List<String> referencenumbers
+     * @return List<String> reference numbers
      */
     public static List<String> generate(String base, int amount) throws InvalidAlgorithmParameterException {
 
         validateBaseFormat(base);
-
-        if (Objects.isNull(amount)) {
-            throw new InvalidAlgorithmParameterException("amount MUST be given");
-        }
 
         long baseDigit = Long.parseLong(base);
 
@@ -67,13 +63,7 @@ public final class ReferenceNumberGenerator {
                 multiplierIndex = 0;
             }
 
-            char c = base.charAt(i);
-
-            if (!Character.isDigit(c)) {
-                throw new InvalidAlgorithmParameterException("base MUST contain only digits.");
-            }
-
-            int value = Character.getNumericValue(c);
+            int value = Character.getNumericValue(base.charAt(i));
             sum += value * multipliers[multiplierIndex];
             multiplierIndex++;
         }
@@ -82,9 +72,8 @@ public final class ReferenceNumberGenerator {
     }
 
     private static int calculateCheckDigit(int sum) {
-        int checkDigit;
 
-        checkDigit = 10 - sum % 10;
+        int checkDigit = 10 - sum % 10;
 
         if (checkDigit == 10)
         {
