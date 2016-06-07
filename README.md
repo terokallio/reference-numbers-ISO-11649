@@ -6,7 +6,7 @@ As the basis of the reference number you can use the customer number or the invo
 
 The minimum length of a reference number is four characters (basis 3 characters + control number) and the maximum length is 20 characters (19 + 1).
 
-Fast and reliable.
+Fast, reliable, and tested.
 
 ## Usage
 
