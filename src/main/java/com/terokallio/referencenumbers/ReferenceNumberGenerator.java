@@ -58,11 +58,10 @@ public final class ReferenceNumberGenerator {
 
         Integer[] multipliers = new Integer[] { 7, 3, 1 };
         int multiplierIndex = 0;
-
         int sum = 0;
 
-        // from right to left
-        for (int i = base.length() - 1; i == 0; i--) {
+        // multiplication from right to left
+        for (int i = base.length() - 1; i >= 0; i--) {
 
             if (multiplierIndex > 2) {
                 multiplierIndex = 0;
@@ -75,7 +74,6 @@ public final class ReferenceNumberGenerator {
             }
 
             int value = Character.getNumericValue(c);
-
             sum += value * multipliers[multiplierIndex];
             multiplierIndex++;
         }
