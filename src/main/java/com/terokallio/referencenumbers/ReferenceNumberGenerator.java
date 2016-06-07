@@ -14,7 +14,11 @@ import java.util.List;
  *
  * Created by tero.kallio on 06/06/16.
  */
-public class ReferenceNumberGenerator {
+public final class ReferenceNumberGenerator {
+
+    private ReferenceNumberGenerator() {
+        // this is a static class and it makes no sense even try to instantiate this.
+    }
 
     /**
      * Generates a valid reference numbers for a given base String,
@@ -93,7 +97,7 @@ public class ReferenceNumberGenerator {
     }
 
     private static boolean validateBaseFormat(String base) throws InvalidAlgorithmParameterException {
-        if (Objects.isNull(base) || base.isEmpty()) {
+        if (Objects.isNull(base) || base.trim().isEmpty()) {
             throw new InvalidAlgorithmParameterException("base length MUST be between 3 and 19 characters");
         }
 
