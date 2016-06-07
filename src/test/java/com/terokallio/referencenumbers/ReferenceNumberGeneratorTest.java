@@ -186,7 +186,6 @@ public class ReferenceNumberGeneratorTest extends TestCase {
 
     public void testGenerateMillionRefCodes() {
         List<String> result = new ArrayList<String>();
-
         try {
             result = ReferenceNumberGenerator.generate("999", 1000000);
         } catch (InvalidAlgorithmParameterException e) {
