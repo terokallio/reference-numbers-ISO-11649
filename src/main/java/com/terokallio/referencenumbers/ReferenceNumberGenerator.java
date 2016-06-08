@@ -83,7 +83,7 @@ public final class ReferenceNumberGenerator {
         return checkDigit;
     }
 
-    private static boolean validateBaseFormat(String base) throws InvalidAlgorithmParameterException {
+    private static void validateBaseFormat(String base) throws InvalidAlgorithmParameterException {
         if (Objects.isNull(base) || base.trim().isEmpty()) {
             throw new InvalidAlgorithmParameterException("base length MUST be between 3 and 19 characters");
         }
@@ -95,8 +95,6 @@ public final class ReferenceNumberGenerator {
         if (!NumberUtils.isNumber(base)) {
             throw new InvalidAlgorithmParameterException("base MUST be a number");
         }
-
-        return true;
     }
 }
 
