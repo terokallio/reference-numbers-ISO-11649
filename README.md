@@ -1,6 +1,6 @@
 # reference-numbers
 
-A utility to create and calculate reference numbers to your invoices.
+A algorithm to create and calculate reference numbers to your invoices.
 
 As the basis of the reference number you can use the customer number or the invoice number. 
 
