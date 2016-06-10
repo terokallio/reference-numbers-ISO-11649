@@ -21,6 +21,9 @@ public final class ReferenceNumberGenerator {
     }
 
     /**
+     * The Finnish creditor reference is used in domestic payment traffic.
+     * (See {@link RFCreditorReferenceGenerator} for cross-border reference numbers)
+     *
      * Generates a valid reference numbers for a given base String,
      * by creating a valid control number for its last digit.
      *
