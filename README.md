@@ -6,7 +6,19 @@ As the basis of the reference number you can use the customer number or the invo
 
 The minimum length of a reference number is four characters (basis 3 characters + control number) and the maximum length is 20 characters (19 + 1).
 
-## Usage
+## RF Creditor references (International, cross-border payments)
+
+```java
+  List<String> referenceNumbers = new ArrayList<String>();
+  try {
+    // base for refnum: 999111, amount: 1
+    referenceNumbers = RFCreditorReferenceGenerator.generate("999111", 1);
+  } catch (InvalidAlgorithmParameterException e) {
+    // Do error handling. Input parameter error.
+  }
+```
+
+## Creditor references (Finland, domestic)
 
 ```java
   List<String> referenceNumbers = new ArrayList<String>();
@@ -36,8 +48,8 @@ MT103+ message, the RF Creditor reference is forwarded, unchanged, in field 70.
 
 A creditor reference allows a company to identify customer invoices. Payments with a creditor reference are forwarded to the beneficiary in accordance with what has been agreed on the
 remittance of reference payments.
-The Finnish creditor reference (see the Federation of Finnish Financial Services publication Reference number and check digit) is used in domestic payment traffic The new global
-Structured Creditor Reference (ISO 11649, hereinafter ’RF Creditor reference’) may be used on cross-border invoices and domestic invoices in Finland as of 1 December 2010.
+The Finnish creditor reference (see the Federation of Finnish Financial Services publication Reference number and check digit) is used in domestic payment traffic.
+The new global Structured Creditor Reference (ISO 11649, hereinafter ’RF Creditor reference’) may be used on cross-border invoices and domestic invoices in Finland as of 1 December 2010.
 
 ### The RF Creditor reference is based on the Finnish creditor reference
 
