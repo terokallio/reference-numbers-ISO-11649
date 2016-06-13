@@ -17,7 +17,7 @@ import java.util.List;
 public final class ReferenceNumberGenerator {
 
     private ReferenceNumberGenerator() {
-        // this is a static class and it makes no sense to instantiate this.
+        // it makes no sense to instantiate this.
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.terokallio.referencenumbers;
 
+import java.math.BigInteger;
 import java.security.InvalidAlgorithmParameterException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public final class RFCreditorReferenceGenerator {
     private final static String ZERO = "0";
 
     private RFCreditorReferenceGenerator() {
-        // this is a static class and it makes no sense to instantiate this.
+        // it makes no sense to instantiate this.
     }
 
     /**
@@ -53,9 +54,9 @@ public final class RFCreditorReferenceGenerator {
     public static List<String> generate(String base, int amount) throws InvalidAlgorithmParameterException {
 
         List<String> referenceNumbers = ReferenceNumberGenerator.generate(base, amount);
-        List<String> rfCreditorReferences = new ArrayList<String>(amount);
+        List<String> rfCreditorReferences = new ArrayList<String>();
 
-        for (int i = 0; i <= referenceNumbers.size(); i++) {
+        for (int i = 0; i < referenceNumbers.size(); i++) {
             //Add the number string “2715” (which corresponds to the letters ‘RF’) and “00” at the
             //end of the Finnish creditor reference
             String RFRef = referenceNumbers.get(i) + RF_NUM_VALUE + DOUBLE_ZERO;
@@ -74,9 +75,9 @@ public final class RFCreditorReferenceGenerator {
      */
     private static String getCheckDigits(String RFRef) {
 
-        long modulo = Long.parseLong(RFRef) / 97;
+        BigInteger modulo =  new BigInteger(RFRef).remainder(BigInteger.valueOf(97L));
 
-        long checkDigits =  98 - modulo;
+        int checkDigits =  98 - modulo.intValue();
 
         if (checkDigits < 10) {
             return ZERO + String.valueOf(checkDigits);
