@@ -2,6 +2,8 @@
 
 A algorithm to create and calculate reference numbers to your invoices.
 
+Implementation of both domestic (ISO/IEC 7064 (MOD 97-10) and International cross border references (ISO 11649).
+
 As the basis of the reference number you can use the customer number or the invoice number. 
 
 The minimum length of a reference number is four characters (basis 3 characters + control number) and the maximum length is 20 characters (19 + 1).
