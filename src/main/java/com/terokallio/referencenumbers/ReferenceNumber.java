@@ -14,13 +14,16 @@ import java.util.List;
  *
  * Created by tero.kallio on 06/06/16.
  */
-public final class ReferenceNumberGenerator {
+public final class ReferenceNumber {
 
-    private ReferenceNumberGenerator() {
-        // this is a static class and it makes no sense to instantiate this.
+    private ReferenceNumber() {
+        // it makes no sense to instantiate this.
     }
 
     /**
+     * The Finnish creditor reference is used in domestic payment traffic.
+     * (See {@link RFCreditorReference} for cross-border reference numbers)
+     *
      * Generates a valid reference numbers for a given base String,
      * by creating a valid control number for its last digit.
      *
