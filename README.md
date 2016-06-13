@@ -57,7 +57,7 @@ The new global Structured Creditor Reference (ISO 11649, hereinafter ’RF Credi
 
 #### The RF Creditor reference is based on the Finnish creditor reference
 
-In Finland, the RF Creditor reference is based on the Finnish creditor reference
+In Finland, the RF Creditor reference is based on the Finnish creditor reference.
 The structure of the RF Creditor reference is as follows:
 RFXX1234561, where
 • RF is the identifier of the RF Creditor reference
