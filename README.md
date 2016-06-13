@@ -14,7 +14,7 @@ The minimum length of a reference number is four characters (basis 3 characters 
   List<String> referenceNumbers = new ArrayList<String>();
   try {
     // base for refnum: 999111, amount: 1
-    referenceNumbers = RFCreditorReferenceGenerator.generate("999111", 1);
+    referenceNumbers = RFCreditorReference.generate("999111", 1);
   } catch (InvalidAlgorithmParameterException e) {
     // Do error handling. Input parameter error.
   }
@@ -27,7 +27,7 @@ The minimum length of a reference number is four characters (basis 3 characters 
   List<String> referenceNumbers = new ArrayList<String>();
   try {
     // base for refnum: 999111, amount: 1
-    referenceNumbers = ReferenceNumberGenerator.generate("999111", 1);
+    referenceNumbers = ReferenceNumber.generate("999111", 1);
   } catch (InvalidAlgorithmParameterException e) {
     // Do error handling. Input parameter error.
   }
