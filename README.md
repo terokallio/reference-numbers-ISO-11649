@@ -18,7 +18,7 @@ The minimum length of a reference number is four characters (basis 3 characters 
   } catch (InvalidAlgorithmParameterException e) {
     // Do error handling. Input parameter error.
   }
-  // this will return reference number: 9991110
+  // this will return RF Creditor reference number: RF419991110
 ```
 
 ### Creditor references (Finland, domestic)
@@ -31,7 +31,7 @@ The minimum length of a reference number is four characters (basis 3 characters 
   } catch (InvalidAlgorithmParameterException e) {
     // Do error handling. Input parameter error.
   }
-  // this will return RF Creditor reference number: RF419991110
+  // this will return reference number: 9991110
 ```
 
 ### Details
