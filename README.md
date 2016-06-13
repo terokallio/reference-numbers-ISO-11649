@@ -1,6 +1,6 @@
 # reference-numbers
 
-A algorithm to create and calculate reference numbers to your invoices.
+An algorithm to create and calculate reference numbers to your invoices.
 
 Implementation of both domestic (ISO/IEC 7064 (MOD 97-10) and International cross border references (ISO 11649).
 
