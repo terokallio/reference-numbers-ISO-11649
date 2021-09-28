@@ -10,7 +10,7 @@ import java.util.List;
  * and domestic invoices. The RF Creditor reference is based on the Finnish creditor reference.
  *
  * The structure of the RF Creditor reference is as follows: RFXX1234561, where
- * RF is the identifier of the RF Creditor reference, XX are the two check digits
+ * RF is the identifier of the RF Creditor reference, XX are two check digits
  *
  * 1234561 is the Finnish creditor reference, which consists of numerical digits only and which
  * the creditor may create freely within the limits of the maximum reference length of 20 digits.
@@ -44,15 +44,14 @@ public final class RFCreditorReference {
      * Add the letters ‘RF’ and the check digits before the basic creditor reference element
      * to obtain the RF Creditor reference such as: RF332348236 (machine-readable format)
      *
-     * @param base
-     * @param amount
+     * @param base String
+     * @param amount int
      * @return List<String> RFCreditorReferences;
-     * @throws InvalidAlgorithmParameterException
      */
     public static List<String> generate(String base, int amount) throws InvalidAlgorithmParameterException {
 
         List<String> referenceNumbers = ReferenceNumber.generate(base, amount);
-        List<String> rfCreditorReferences = new ArrayList<String>();
+        List<String> rfCreditorReferences = new ArrayList<>();
 
         for (int i = 0; i < referenceNumbers.size(); i++) {
             //Add the number string “2715” (which corresponds to the letters ‘RF’) and “00” at the
@@ -78,7 +77,7 @@ public final class RFCreditorReference {
         int checkDigits =  98 - modulo.intValue();
 
         if (checkDigits < 10) {
-            return ZERO + String.valueOf(checkDigits);
+            return ZERO + checkDigits;
         }
 
         return String.valueOf(checkDigits);

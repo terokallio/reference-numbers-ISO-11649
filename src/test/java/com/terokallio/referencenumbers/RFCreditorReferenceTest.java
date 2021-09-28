@@ -65,7 +65,7 @@ public class RFCreditorReferenceTest extends TestCase {
 
     public void testNegativeAmount() {
         int amount = -1;
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = RFCreditorReference.generate("111", amount);
         } catch (InvalidAlgorithmParameterException e) {
@@ -76,7 +76,7 @@ public class RFCreditorReferenceTest extends TestCase {
 
     public void testZeroAmount() {
         int amount = 0;
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = RFCreditorReference.generate("111", amount);
         } catch (InvalidAlgorithmParameterException e) {
@@ -96,23 +96,23 @@ public class RFCreditorReferenceTest extends TestCase {
     }
 
     public void testValidateBaseLengthMin2() {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = RFCreditorReference.generate("123", 1);
         } catch (InvalidAlgorithmParameterException e) {
             fail();
         }
-        assertTrue(result.get(0).length() == 8);
+        assertEquals(result.get(0).length(), 8);
     }
 
     public void testValidateBaseLengthMax() {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = RFCreditorReference.generate("1234567890123456789", 1);
         } catch (InvalidAlgorithmParameterException e) {
             fail();
         }
-        assertTrue(result.get(0).length() == 24);
+        assertEquals(result.get(0).length(), 24);
     }
 
     public void testValidateBaseLengthMax2() {
@@ -126,7 +126,7 @@ public class RFCreditorReferenceTest extends TestCase {
     }
 
     public void testGenerateMillionRefCodes() {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = RFCreditorReference.generate("999", 1000000);
         } catch (InvalidAlgorithmParameterException e) {
@@ -136,7 +136,7 @@ public class RFCreditorReferenceTest extends TestCase {
     }
 
     public void testGenerateTwentyValidRFCreditorCodes() {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = RFCreditorReference.generate("1234567890123456789", 20);
         } catch (InvalidAlgorithmParameterException e) {
@@ -166,7 +166,7 @@ public class RFCreditorReferenceTest extends TestCase {
     }
 
     public void testGenerateTwentyValidRFCreditorCodes2() {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = RFCreditorReference.generate("123", 20);
         } catch (InvalidAlgorithmParameterException e) {

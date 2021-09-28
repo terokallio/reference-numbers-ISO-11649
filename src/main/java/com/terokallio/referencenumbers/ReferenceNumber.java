@@ -43,7 +43,7 @@ public final class ReferenceNumber {
 
         long baseDigit = Long.parseLong(base);
 
-        List<String> referenceNumbers = new ArrayList<String>();
+        List<String> referenceNumbers = new ArrayList<>();
 
         for (int i = 0; i < amount; i++) {
             referenceNumbers.add(String.valueOf(baseDigit) + calculateCheckSum(Long.toString(baseDigit)));

@@ -63,7 +63,7 @@ public class ReferenceNumberTest extends TestCase {
 
     public void testNegativeAmount() {
         int amount = -1;
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = ReferenceNumber.generate("111", amount);
         } catch (InvalidAlgorithmParameterException e) {
@@ -74,7 +74,7 @@ public class ReferenceNumberTest extends TestCase {
 
     public void testZeroAmount() {
         int amount = 0;
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = ReferenceNumber.generate("111", amount);
         } catch (InvalidAlgorithmParameterException e) {
@@ -94,23 +94,23 @@ public class ReferenceNumberTest extends TestCase {
     }
 
     public void testValidateBaseLengthMin2() {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = ReferenceNumber.generate("123", 1);
         } catch (InvalidAlgorithmParameterException e) {
            fail();
         }
-        assertTrue(result.get(0).length() == 4);
+        assertEquals(result.get(0).length(), 4);
     }
 
     public void testValidateBaseLengthMax() {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = ReferenceNumber.generate("1234567890123456789", 1);
         } catch (InvalidAlgorithmParameterException e) {
             fail();
         }
-        assertTrue(result.get(0).length() == 20);
+        assertEquals(result.get(0).length(), 20);
     }
 
     public void testValidateBaseLengthMax2() {
@@ -124,7 +124,7 @@ public class ReferenceNumberTest extends TestCase {
     }
 
     public void testGenerateTwentyValidRefCodes() {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = ReferenceNumber.generate("123123", 20);
         } catch (InvalidAlgorithmParameterException e) {
@@ -155,7 +155,7 @@ public class ReferenceNumberTest extends TestCase {
     }
 
     public void testGenerateTwentyValidRefCodes2() {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = ReferenceNumber.generate("999", 20);
         } catch (InvalidAlgorithmParameterException e) {
@@ -185,7 +185,7 @@ public class ReferenceNumberTest extends TestCase {
     }
 
     public void testGenerateMillionRefCodes() {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         try {
             result = ReferenceNumber.generate("999", 1000000);
         } catch (InvalidAlgorithmParameterException e) {
