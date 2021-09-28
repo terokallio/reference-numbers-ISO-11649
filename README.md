@@ -11,7 +11,7 @@ The minimum length of a reference number is four characters (basis 3 characters 
 ### RF Creditor references (International, cross-border payments)
 
 ```java
-  List<String> referenceNumbers = new ArrayList<String>();
+  List<String> referenceNumbers = new ArrayList<>();
   try {
     // base for refnum: 999111, amount: 1
     referenceNumbers = RFCreditorReference.generate("999111", 1);
@@ -24,7 +24,7 @@ The minimum length of a reference number is four characters (basis 3 characters 
 ### Creditor references (Finland, domestic)
 
 ```java
-  List<String> referenceNumbers = new ArrayList<String>();
+  List<String> referenceNumbers = new ArrayList<>();
   try {
     // base for refnum: 999111, amount: 1
     referenceNumbers = ReferenceNumber.generate("999111", 1);
