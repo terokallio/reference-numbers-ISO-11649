@@ -95,8 +95,8 @@ public final class ReferenceNumber {
             throw new InvalidAlgorithmParameterException("base length MUST be between 3 and 19 characters");
         }
 
-        if (!NumberUtils.isNumber(base)) {
-            throw new InvalidAlgorithmParameterException("base MUST be a number");
+        if (!NumberUtils.isDigits(base)) {
+            throw new InvalidAlgorithmParameterException("base MUST be digits only");
         }
     }
 }

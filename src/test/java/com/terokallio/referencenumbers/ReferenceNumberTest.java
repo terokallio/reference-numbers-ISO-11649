@@ -1,8 +1,10 @@
 package com.terokallio.referencenumbers;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.util.ArrayList;
@@ -11,26 +13,9 @@ import java.util.List;
 /**
  * Unit test for ReferenceNumber
  */
-public class ReferenceNumberTest extends TestCase {
+public class ReferenceNumberTest {
 
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public ReferenceNumberTest( String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( ReferenceNumberTest.class );
-    }
-
+    @Test
     public void testValidateNullBase() {
         try {
             ReferenceNumber.generate(null, 1);
@@ -41,6 +26,7 @@ public class ReferenceNumberTest extends TestCase {
         fail();
     }
 
+    @Test
     public void testValidateEmptyBase() {
         try {
             ReferenceNumber.generate("", 1);
@@ -51,16 +37,19 @@ public class ReferenceNumberTest extends TestCase {
         fail();
     }
 
+    @Test
     public void testValidateNotANumber() {
         try {
             ReferenceNumber.generate("1231A12", 10);
         } catch (InvalidAlgorithmParameterException e) {
-            assertTrue(e.getMessage().contains("base MUST be a number"));
+            assertTrue(e.getMessage().contains("base MUST be digits only"));
             return;
         }
+
         fail();
     }
 
+    @Test
     public void testNegativeAmount() {
         int amount = -1;
         List<String> result = new ArrayList<>();
@@ -72,6 +61,7 @@ public class ReferenceNumberTest extends TestCase {
         assertEquals(0, result.size());
     }
 
+    @Test
     public void testZeroAmount() {
         int amount = 0;
         List<String> result = new ArrayList<>();
@@ -83,6 +73,7 @@ public class ReferenceNumberTest extends TestCase {
         assertEquals(0, result.size());
     }
 
+    @Test
     public void testValidateBaseLengthMin() {
         try {
             ReferenceNumber.generate("12", 1);
@@ -93,16 +84,18 @@ public class ReferenceNumberTest extends TestCase {
         fail();
     }
 
+    @Test
     public void testValidateBaseLengthMin2() {
         List<String> result = new ArrayList<>();
         try {
             result = ReferenceNumber.generate("123", 1);
         } catch (InvalidAlgorithmParameterException e) {
-           fail();
+            fail();
         }
         assertEquals(result.get(0).length(), 4);
     }
 
+    @Test
     public void testValidateBaseLengthMax() {
         List<String> result = new ArrayList<>();
         try {
@@ -113,6 +106,7 @@ public class ReferenceNumberTest extends TestCase {
         assertEquals(result.get(0).length(), 20);
     }
 
+    @Test
     public void testValidateBaseLengthMax2() {
         try {
             ReferenceNumber.generate("12345678901234567890", 1);
@@ -123,12 +117,13 @@ public class ReferenceNumberTest extends TestCase {
         fail();
     }
 
+    @Test
     public void testGenerateTwentyValidRefCodes() {
         List<String> result = new ArrayList<>();
         try {
             result = ReferenceNumber.generate("123123", 20);
         } catch (InvalidAlgorithmParameterException e) {
-           fail("Failed to generate ref codes.");
+            fail("Failed to generate ref codes.");
         }
         assertEquals(20, result.size());
         assertEquals("1231234", result.get(0));
@@ -154,6 +149,7 @@ public class ReferenceNumberTest extends TestCase {
         assertEquals("1231425", result.get(19));
     }
 
+    @Test
     public void testGenerateTwentyValidRefCodes2() {
         List<String> result = new ArrayList<>();
         try {
@@ -184,6 +180,7 @@ public class ReferenceNumberTest extends TestCase {
         assertEquals("10184", result.get(19));
     }
 
+    @Test
     public void testGenerateMillionRefCodes() {
         List<String> result = new ArrayList<>();
         try {

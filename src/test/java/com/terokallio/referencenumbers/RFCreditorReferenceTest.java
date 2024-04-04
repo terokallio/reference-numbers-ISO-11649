@@ -1,8 +1,10 @@
 package com.terokallio.referencenumbers;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.util.ArrayList;
@@ -12,26 +14,9 @@ import java.util.List;
 /**
  * Created by tero.kallio on 13/06/16.
  */
-public class RFCreditorReferenceTest extends TestCase {
+public class RFCreditorReferenceTest {
 
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public RFCreditorReferenceTest(String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( RFCreditorReferenceTest.class );
-    }
-
+    @Test
     public void testValidateNullBase() {
         try {
             RFCreditorReference.generate(null, 1);
@@ -43,6 +28,7 @@ public class RFCreditorReferenceTest extends TestCase {
         fail();
     }
 
+    @Test
     public void testValidateEmptyBase() {
         try {
             RFCreditorReference.generate("", 1);
@@ -53,16 +39,18 @@ public class RFCreditorReferenceTest extends TestCase {
         fail();
     }
 
+    @Test
     public void testValidateNotANumber() {
         try {
             RFCreditorReference.generate("1231A12", 10);
         } catch (InvalidAlgorithmParameterException e) {
-            assertTrue(e.getMessage().contains("base MUST be a number"));
+            assertTrue(e.getMessage().contains("base MUST be digits only"));
             return;
         }
         fail();
     }
 
+    @Test
     public void testNegativeAmount() {
         int amount = -1;
         List<String> result = new ArrayList<>();
@@ -74,6 +62,7 @@ public class RFCreditorReferenceTest extends TestCase {
         assertEquals(0, result.size());
     }
 
+    @Test
     public void testZeroAmount() {
         int amount = 0;
         List<String> result = new ArrayList<>();
@@ -85,6 +74,7 @@ public class RFCreditorReferenceTest extends TestCase {
         assertEquals(0, result.size());
     }
 
+    @Test
     public void testValidateBaseLengthMin() {
         try {
             RFCreditorReference.generate("12", 1);
@@ -95,6 +85,7 @@ public class RFCreditorReferenceTest extends TestCase {
         fail();
     }
 
+    @Test
     public void testValidateBaseLengthMin2() {
         List<String> result = new ArrayList<>();
         try {
@@ -105,6 +96,7 @@ public class RFCreditorReferenceTest extends TestCase {
         assertEquals(result.get(0).length(), 8);
     }
 
+    @Test
     public void testValidateBaseLengthMax() {
         List<String> result = new ArrayList<>();
         try {
@@ -115,6 +107,7 @@ public class RFCreditorReferenceTest extends TestCase {
         assertEquals(result.get(0).length(), 24);
     }
 
+    @Test
     public void testValidateBaseLengthMax2() {
         try {
             RFCreditorReference.generate("12345678901234567890", 1);
@@ -125,6 +118,7 @@ public class RFCreditorReferenceTest extends TestCase {
         fail();
     }
 
+    @Test
     public void testGenerateMillionRefCodes() {
         List<String> result = new ArrayList<>();
         try {
@@ -135,6 +129,7 @@ public class RFCreditorReferenceTest extends TestCase {
         assertEquals(1000000, result.size());
     }
 
+    @Test
     public void testGenerateTwentyValidRFCreditorCodes() {
         List<String> result = new ArrayList<>();
         try {
@@ -165,6 +160,7 @@ public class RFCreditorReferenceTest extends TestCase {
         assertEquals("RF2012345678901234568084", result.get(19));
     }
 
+    @Test
     public void testGenerateTwentyValidRFCreditorCodes2() {
         List<String> result = new ArrayList<>();
         try {
